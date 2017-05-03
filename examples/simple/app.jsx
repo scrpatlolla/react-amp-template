@@ -25,7 +25,7 @@ var App = function App(props) {
   // register any amp-script. just an example.
   addScript('amp-social-share');
 
-  return React.createElement('div', null, 'Hello World');
+  return React.createElement('div', null, 'Hello AMP!');
 };
 
 module.exports = App;
