@@ -1,5 +1,7 @@
 import http from 'http';
 import React from 'react';
+import { Router, Route, Switch } from 'react-router';
+
 import {
     StyleSheet,
     css,
@@ -14,8 +16,8 @@ const style = StyleSheet.create({
     social: {padding: '10px'},
 });
 
-// --- REACT + CSUTOM-TAGS ---
-const SampleApp = ({value}) => {
+// --- REACT + CUSTOM-TAGS ---
+const SampleApp = ({ value, location }) => {
     // --- CUSTOM-SCRIPTS ---
     addMeta([
         {type: 'meta', content: {content: 'something'}},
@@ -24,22 +26,24 @@ const SampleApp = ({value}) => {
 
     //Append the value from the URL
     const prId = "12512" //We can make it dynamic
-    const url = "http://localhost:8000/prId=" + prId;
+    const url = location.pathname; //window,location.href;
     const id = url.substring(url.lastIndexOf('/') + 1);
     const output = id.replace(/[a-zA-Z=]/g, '');
 
     return (
         <div>
-
             <h1>Hello {value}</h1>
             <hr />
-            <h2>Here is the Output: {output} took from prId</h2>
+            <h2>{url} took from prId</h2>
             <hr />
             <h2><a className="redirect" href={'//www.fitchratings.com/prId/' + output} target="_blank">Click Here</a>
             </h2>
         </div>
     );
 };
+
+//AJAX CALL --GET THE ID AND MAKE THE AJAX REQUEST-- GET AJAX CALL
+
 
 
 export const startServer = (html) => {
